@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: droid.mobile.games.gradle.Aapt3Plugin
+
+aapt3{
+    resourcesPackage = [
+            "com.android.game.demo",
+            "com.android.game.test",
+    ]
+}
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.and.game.demo"
+        minSdkVersion 18
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    implementation project(':support-common')
+    implementation project(':support-core')
+    implementation project(':support-thirdpart')
+}
